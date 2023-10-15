@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zebra_scanner_palette/pages/scann/scann_view.dart';
 import 'package:get/get.dart';
+import '../../pages/scann/scann_view.dart';
 import '../../constants.dart';
 import '../../mock/mockservice.dart';
 import '../../pages/login/login_model.dart';

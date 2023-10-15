@@ -1,32 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
-
-//Notion API
-// StoreUser
-var kNotionStoreUserKey = 'secret_CDW3vl05rKA9JIoHukM5dkmZKibsKVtTubtTMnZ9pZ';
-var kDatabaseUser = '44321b2c-738b-4da8-9794-83d93b1925cd';
-var kLoadStoreUserUrl =
-    'https://api.notion.com/v1/databases/$kDatabaseUser/query';
-//Paletten Administration
-var kNotionApiKey = 'secret_HYsIdiYWxgkabjlqcRfur1NaCdVdLFtXPLx07D024aU';
-var kDatabasePallet = 'a1594102-8d3a-47ed-97cb-15772253e6ae';
-var kLoadPageUrl = 'https://api.notion.com/v1/databases/$kDatabasePallet/query';
-
-//gemeinsame Urls
-var kBasePageURL = 'https://api.notion.com/v1/pages';
-var kPatchDatabaseURL = 'https://api.notion.com/v1/databases';
-var khttpHeader = {
-  HttpHeaders.authorizationHeader: 'Bearer $kNotionApiKey',
-  'Content-Type': 'application/json',
-  'Notion-Version': '2022-06-28'
-};
-
-// Location PTV-API
-var kPtvApiKey =
-    'RVVfZmRhYWM1ZDI3NDZjNDc4MmE3YWNlYWJiODJjZWNlNmI6ZjIzZjc1MmItODNlNi00ODVhLThlOGItNGUyMzkzNjZiNDRj';
 
 var kLetterSpacing = 2.0;
 

@@ -5,7 +5,6 @@ import '../constants.dart';
 import '../pages/login/login_controller.dart';
 import '../http_overrides.dart';
 import '../sample_routs.dart';
-//import '../pages/scann/scann_view.dart';
 import '../pages/login/login_view.dart';
 
 void main() {

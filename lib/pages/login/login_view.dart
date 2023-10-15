@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zebra_scanner_palette/utils/drope_down_user.dart';
-import 'package:flutter_zebra_scanner_palette/utils/my_text_button.dart';
-import 'package:flutter_zebra_scanner_palette/utils/my_text_field.dart';
 import 'package:get/get.dart';
 import 'login_controller.dart';
+import '../../utils/drope_down_user.dart';
+import '../../utils/my_text_button.dart';
+import '../../utils/my_text_field.dart';
 import '../../constants.dart';
 
 class LoginPage extends GetView<LoginController> {
