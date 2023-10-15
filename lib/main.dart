@@ -1,22 +1,22 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../constants.dart';
+import '../pages/login/login_controller.dart';
 import '../http_overrides.dart';
-import '../sample_bindings.dart';
 import '../sample_routs.dart';
-import '../pages/scann/scann_view.dart';
+//import '../pages/scann/scann_view.dart';
+import '../pages/login/login_view.dart';
 
 void main() {
-  SampleBindings().dependencies();
   HttpOverrides.global = MyHttpOverrides();
+  Get.lazyPut<LoginController>(() => LoginController(), fenix: true);
   return runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter DataWedge Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: ScannPage.namedRoute,
+      title: 'Internorm Palette',
+      theme: kThemeData,
+      initialRoute: LoginPage.namedRoute,
       getPages: SampleRouts.samplePages,
     ),
   );

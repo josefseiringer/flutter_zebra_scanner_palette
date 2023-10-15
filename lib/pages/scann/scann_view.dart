@@ -8,7 +8,7 @@ import 'package:flutter_datawedge/models/scanner_status.dart';
 
 class ScannPage extends StatefulWidget {
   const ScannPage({super.key});
-  static const namedRoute = '/';
+  static const namedRoute = '/scan_page';
 
   @override
   _ScannPageState createState() => _ScannPageState();
@@ -69,12 +69,14 @@ class _ScannPageState extends State<ScannPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Last codes:',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20)),
+                    const Text(
+                      'Last codes:',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.5,
                       child: ListView.separated(
                         reverse: true,
                         itemCount: scanResults.length,

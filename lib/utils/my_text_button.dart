@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import '../constants.dart';
+
+class MyTextButton extends StatelessWidget {
+  final VoidCallback onTab;
+  final String labelText;
+  final double buttonWidth;
+  final double buttonHeight;
+  final Color buttonColor;
+  final Color buttonLabelColor;
+  const MyTextButton(
+      {super.key,
+      required this.onTab,
+      required this.labelText,
+      required this.buttonWidth,
+      required this.buttonHeight,
+      required this.buttonColor,
+      required this.buttonLabelColor,
+      });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: buttonWidth,
+      height: buttonHeight,
+      child: TextButton(
+        style: ButtonStyle(
+          alignment: Alignment.center,
+          backgroundColor: MaterialStateProperty.all<Color>(buttonColor),
+          foregroundColor: MaterialStateProperty.all<Color>(buttonLabelColor),
+        ),
+        onPressed: onTab,
+        child: Text(
+          labelText.toUpperCase(),
+          style: kMyTextStyle,
+        ),
+      ),
+    );
+  }
+}
