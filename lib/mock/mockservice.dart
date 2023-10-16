@@ -1,28 +1,26 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 import '../pages/login/login_model.dart';
 
 class MockService {
+  static final _loginUser = <LoginUser>[];
 
-  static final _loginUser = <LoginUser>[
-    LoginUser(
-      szUserName: 'ATISTAHO',
-      szPassword: '1234',
-    ),
-    LoginUser(
-      szUserName: 'ATISFRITZ',
-      szPassword: '1234',
-    ),
-    LoginUser(
-      szUserName: 'ATSEIRJO',
-      szPassword: '1234',
-    ),
-    LoginUser(
-      szUserName: 'ATLEHNMA',
-      szPassword: '1234',
-    ),
-  ];
+  static Future<List<LoginUser>> get getMockUserList async {
+    var users = await readUsers();
+    return users;
+  }
 
-  static List<LoginUser> get getMockUserList {
-    return _loginUser;
+  static Future<List<LoginUser>> readUsers() async {
+    //Load the JSON file
+    final String jsonString = await rootBundle.loadString('lib/mock/user.json');
+    //Parse the JSON data
+    final List<dynamic> jsonData = jsonDecode(jsonString);
+    //Convert the JSON data to a list of Dart objects
+    final List<LoginUser> users =
+        jsonData.map((json) => LoginUser.fromMap(json)).toList();
+    return users;
   }
 
   static void setMockUserList(String user, String password) {

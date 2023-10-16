@@ -11,8 +11,8 @@ class LoginController extends GetxController {
   late List<LoginUser> _mockLoginUsers;
 
   @override
-  void onReady() {
-    _mockLoginUsers = MockService.getMockUserList;
+  void onReady() async {
+    _mockLoginUsers = await MockService.getMockUserList;
   }
 
   @override
@@ -27,7 +27,7 @@ class LoginController extends GetxController {
           item.szPassword == passwordController.value.text);
       if (resultUser != null) {
         kDisplaySnackBarSavePallet('Login successfully!');
-        Get.offAndToNamed(ScannPage.namedRoute);
+        Get.offAllNamed(ScannPage.namedRoute);
       } else {
         kDisplaySnackBar('User not found!');
       }

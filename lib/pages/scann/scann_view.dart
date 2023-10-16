@@ -5,6 +5,7 @@ import 'package:flutter_datawedge/flutter_datawedge.dart';
 import 'package:flutter_datawedge/models/action_result.dart';
 import 'package:flutter_datawedge/models/scan_result.dart';
 import 'package:flutter_datawedge/models/scanner_status.dart';
+import 'package:flutter_zebra_scanner_palette/utils/my_text_field.dart';
 
 class ScannPage extends StatefulWidget {
   const ScannPage({super.key});
@@ -15,25 +16,29 @@ class ScannPage extends StatefulWidget {
 }
 
 class _ScannPageState extends State<ScannPage> {
+  late FlutterDataWedge fdw;
   late StreamSubscription<ScanResult> onScanResultListener;
   late StreamSubscription<ScannerStatus> onScannerStatusListener;
   late StreamSubscription<ActionResult> onScannerEventListener;
+  late TextEditingController scannDataController;
 
   List<ScanResult> scanResults = [];
   String _lastStatus = '';
-  late FlutterDataWedge fdw;
   Future<void>? initScannerResult;
   @override
   void initState() {
-    super.initState();
+    scannDataController = TextEditingController();
     initScannerResult = initScanner();
+    super.initState();
   }
 
   Future<void> initScanner() async {
     if (Platform.isAndroid) {
       fdw = FlutterDataWedge(profileName: 'FlutterDataWedge');
-      onScanResultListener = fdw.onScanResult
-          .listen((result) => setState(() => scanResults.add(result)));
+      onScanResultListener = fdw.onScanResult.listen((result) => setState(() {
+            scanResults.add(result);
+            scannDataController.text = result.data;
+          }));
       onScannerStatusListener = fdw.onScannerStatus.listen(
           (status) => setState(() => _lastStatus = status.status.toString()));
       await fdw.initialize();
@@ -45,14 +50,17 @@ class _ScannPageState extends State<ScannPage> {
     onScanResultListener.cancel();
     onScannerStatusListener.cancel();
     onScannerEventListener.cancel();
+    scannDataController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    var sizeBoxListViewHeight = MediaQuery.of(context).size.height * 0.55;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter DataWedge Example'),
+        centerTitle: true,
+        title: const Text('Palett scanner'),
       ),
       body: FutureBuilder(
           future: initScannerResult,
@@ -69,6 +77,14 @@ class _ScannPageState extends State<ScannPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    MyTextField(
+                      hintText: ('last scann'),
+                      suffixIcon: const Icon(Icons.qr_code),
+                      myController: scannDataController,
+                      myTextInputType: TextInputType.text,
+                      bObscureText: false,
+                      mnTextfieldHeight: 50.0,
+                    ),
                     const Text(
                       'Last codes:',
                       style:
@@ -76,7 +92,7 @@ class _ScannPageState extends State<ScannPage> {
                     ),
                     SizedBox(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.5,
+                      height: sizeBoxListViewHeight,
                       child: ListView.separated(
                         reverse: true,
                         itemCount: scanResults.length,
@@ -90,14 +106,15 @@ class _ScannPageState extends State<ScannPage> {
                     ),
                     Wrap(
                       children: [
-                        const Expanded(
-                          child: Text('Last status:',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20)),
+                        const Text(
+                          'Last status:',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
-                        Expanded(
-                          child: Text(_lastStatus,
-                              style: Theme.of(context).textTheme.headlineSmall),
+                        Text(
+                          _lastStatus,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ],
                     ),
