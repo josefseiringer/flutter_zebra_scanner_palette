@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../pages/scann/scann_view.dart';
+import '../../pages/palett/palett_view.dart';
 import '../../constants.dart';
 import '../../mock/mockservice.dart';
 import '../../pages/login/login_model.dart';
@@ -27,7 +27,7 @@ class LoginController extends GetxController {
           item.szPassword == passwordController.value.text);
       if (resultUser != null) {
         kDisplaySnackBarSavePallet('Login successfully!');
-        Get.offAllNamed(ScannPage.namedRoute);
+        Get.offAllNamed(PalettPage.namedRoute);
       } else {
         kDisplaySnackBar('User not found!');
       }

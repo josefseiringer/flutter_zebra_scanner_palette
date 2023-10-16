@@ -1,6 +1,4 @@
 
-import 'dart:convert';
-
 class LoginUser {
   final String szUserName;
   final String szPassword;
@@ -33,17 +31,17 @@ class LoginUser {
     );
   }
 
-  factory LoginUser.fromJson(String source) => LoginUser.fromMap(json.decode(source) as Map<String, dynamic>);
+  //factory LoginUser.fromJson(String source) => LoginUser.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() => 'LoginUser(szUserName: $szUserName, szPassword: $szPassword)';
 
-  @override
-  bool operator ==(covariant LoginUser other) {
-    if (identical(this, other)) return true;
+  // @override
+  // bool operator ==(covariant LoginUser other) {
+  //   if (identical(this, other)) return true;
   
-    return 
-      other.szUserName == szUserName &&
-      other.szPassword == szPassword;
-  }
+  //   return 
+  //     other.szUserName == szUserName &&
+  //     other.szPassword == szPassword;
+  // }
 }

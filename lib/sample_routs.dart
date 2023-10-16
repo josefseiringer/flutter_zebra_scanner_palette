@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import '../pages/palett/palett_view.dart';
 import '../pages/scann/scann_view.dart';
 import '../pages/login/login_view.dart';
 
@@ -8,7 +9,11 @@ class SampleRouts {
     GetPage(
       name: LoginPage.namedRoute,
       page: () => const LoginPage(),
-    ), 
+    ),
+    GetPage(
+      name: PalettPage.namedRoute,
+      page: () => const PalettPage(),
+    ),  
     GetPage(
       name: ScannPage.namedRoute,
       page: () => const ScannPage(),
