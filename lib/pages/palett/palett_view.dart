@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zebra_scanner_palette/utils/my_text_button.dart';
 import 'package:get/get.dart';
-import '../../constants.dart';
 import 'palett_controller.dart';
+import '../../utils/my_text_button.dart';
+import '../../constants.dart';
 
 class PalettPage extends GetView<PalettController> {
   static const namedRoute = '/palett-page';
@@ -33,24 +33,17 @@ class PalettPage extends GetView<PalettController> {
                   buttonColor: Colors.blue.shade600,
                   buttonLabelColor: Colors.grey.shade200,
                 ),
-                SizedBox(
-                  height: pCtrl.mnVollEin.value,
-                  child: Center(
-                    child: Text(
-                      pCtrl.szPallScanCode.value,
-                      style: kTestStyleDataText,
-                    ),
-                  ),
-                ),
-                MyTextButton(
-                  onTab: () {},
-                  labelText: 'Volle Palette auslagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                SizedBox(height: pCtrl.mnVollAus.value),
+                pCtrl.bVollEin.value
+                    ? SizedBox(
+                        height: pCtrl.mnVollEin.value,
+                        child: Center(
+                          child: Text(
+                            pCtrl.szPallScanCode.value,
+                            style: kTestStyleDataText,
+                          ),
+                        ),
+                      )
+                    : SizedBox(height: pCtrl.mnVollEin.value),
                 MyTextButton(
                   onTab: () {},
                   labelText: 'Leere Palette einlagern...',
@@ -59,7 +52,35 @@ class PalettPage extends GetView<PalettController> {
                   buttonColor: Colors.blue.shade600,
                   buttonLabelColor: Colors.grey.shade200,
                 ),
-                SizedBox(height: pCtrl.mnLeerEin.value),
+                pCtrl.bLeerEin.value
+                    ? SizedBox(
+                        height: pCtrl.mnLeerEin.value,
+                        child: Center(
+                          child: Text(
+                            pCtrl.szPallScanCode.value,
+                            style: kTestStyleDataText,
+                          ),
+                        ))
+                    : SizedBox(height: pCtrl.mnLeerEin.value),
+                MyTextButton(
+                  onTab: () {},
+                  labelText: 'Volle Palette auslagern...',
+                  buttonWidth: displayWidth,
+                  buttonHeight: displayButtonHeight,
+                  buttonColor: Colors.blue.shade600,
+                  buttonLabelColor: Colors.grey.shade200,
+                ),
+                pCtrl.bVollAus.value
+                    ? SizedBox(
+                        height: pCtrl.mnVollAus.value,
+                        child: Center(
+                          child: Text(
+                            pCtrl.szPallScanCode.value,
+                            style: kTestStyleDataText,
+                          ),
+                        ),
+                      )
+                    : SizedBox(height: pCtrl.mnVollAus.value),
                 MyTextButton(
                   onTab: () {},
                   labelText: 'Leere Palette auslagern...',
@@ -68,25 +89,36 @@ class PalettPage extends GetView<PalettController> {
                   buttonColor: Colors.blue.shade600,
                   buttonLabelColor: Colors.grey.shade200,
                 ),
-                SizedBox(height: pCtrl.mnLeerAus.value),
+                pCtrl.bLeerAus.value
+                    ? SizedBox(
+                        height: pCtrl.mnLeerAus.value,
+                        child: Center(
+                          child: Text(
+                            pCtrl.szPallScanCode.value,
+                            style: kTestStyleDataText,
+                          ),
+                        ),
+                      )
+                    : SizedBox(height: pCtrl.mnLeerAus.value),
                 MyTextButton(
                   onTab: () {},
-                  labelText: 'Volle Palette umlagern...',
+                  labelText: 'Palette umlagern...',
                   buttonWidth: displayWidth,
                   buttonHeight: displayButtonHeight,
                   buttonColor: Colors.blue.shade600,
                   buttonLabelColor: Colors.grey.shade200,
                 ),
-                SizedBox(height: pCtrl.mnVollUm.value),
-                MyTextButton(
-                  onTab: () {},
-                  labelText: 'Leere Palette umlagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                SizedBox(height: pCtrl.mnLeerUm.value),
+                pCtrl.bPallUm.value
+                    ? SizedBox(
+                        height: pCtrl.mnPallUm.value,
+                        child: Center(
+                          child: Text(
+                            pCtrl.szPallScanCode.value,
+                            style: kTestStyleDataText,
+                          ),
+                        ),
+                      )
+                    : SizedBox(height: pCtrl.mnPallUm.value),
               ],
             ),
           ),

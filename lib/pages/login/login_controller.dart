@@ -22,11 +22,17 @@ class LoginController extends GetxController {
 
   loginScanner() {
     if (szLoginUser.isNotEmpty && passwordController.value.text != '') {
+      //search list for Login User
       var resultUser = _mockLoginUsers.firstWhereOrNull((item) =>
           item.szUserName == szLoginUser.value &&
           item.szPassword == passwordController.value.text);
       if (resultUser != null) {
-        kDisplaySnackBarSavePallet('Login successfully!');
+        //save User in static Item
+        kLoginUserData = resultUser;
+        //Popup Snake Bar
+        kDisplaySnackBarSavePallet(
+            'Login successfully!\n\nLogin User : ${kLoginUserData.szUserName}\nLocation :${kLoginUserData.szLocation}');
+        // go to PalettPage
         Get.offAllNamed(PalettPage.namedRoute);
       } else {
         kDisplaySnackBar('User not found!');

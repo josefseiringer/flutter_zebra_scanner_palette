@@ -1,18 +1,22 @@
 [
   {
     "szUserName": "ATISFRITZ",
-    "szPassword": "1234"
+    "szPassword": "1234",
+    "szLocation": "TRAUN"
   },
   {
     "szUserName": "ATISTAHO",
-    "szPassword": "1234"
+    "szPassword": "1234",
+    "szLocation": "TRAUN"
   },
   {
     "szUserName": "ATSEIRJO",
-    "szPassword": "1234"
+    "szPassword": "1234",
+    "szLocation": "TRAUN"
   },
   {
     "szUserName": "ATLEHNMA",
-    "szPassword": "1234"
+    "szPassword": "1234",
+    "szLocation": "TRAUN"
   }
 ]

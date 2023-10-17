@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zebra_scanner_palette/pages/login/login_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
+
+
+
+var kLoginUserData = LoginUser();
 
 var kLetterSpacing = 2.0;
 
@@ -64,7 +69,7 @@ SnackbarController kDisplaySnackBar(String szInfoText) {
 SnackbarController kDisplaySnackBarSavePallet(String szInfoText) {
   return Get.snackbar('Info', szInfoText,
       backgroundColor: Colors.green[600],
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 5),
       snackPosition: SnackPosition.TOP,
       colorText: Colors.white,
       snackStyle: SnackStyle.GROUNDED);
