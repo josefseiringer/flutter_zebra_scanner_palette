@@ -1,14 +1,11 @@
 import 'package:get/get.dart';
-
-enum PalettenStatus {
-  eingang, //1
-  eingangLeer, //4
-  ausgang, //3
-  ausgangLeer, //5
-  umlagerung, //2
-}
+import '../../pages/order/order_palett_view.dart';
+import '../../constants.dart';
+import '../../services/order_model.dart';
 
 class PalettController extends GetxController {
+  static PalettController get to => Get.find<PalettController>();
+  final currentOrderModel = OrderModel('', '', '', '', '', '', '').obs;
   final szPallScanCode = 'PLM410510'.obs;
   final mnVollEin = 10.0.obs;
   final mnVollAus = 10.0.obs;
@@ -20,7 +17,6 @@ class PalettController extends GetxController {
   final bLeerEin = false.obs;
   final bLeerAus = false.obs;
   final bPallUm = false.obs;
-  final palettenStatus = PalettenStatus.eingang;
 
   @override
   void onInit() {
@@ -64,4 +60,10 @@ class PalettController extends GetxController {
 
   @override
   void onClose() {}
+
+  openOrderView(PalettenStatus status) {
+    currentOrderModel.value
+        .currentOrderModel('?', status, 'TRAUN', '?', '?', '?');
+    Get.toNamed(OrderPalettPage.namedRoute);
+  }
 }

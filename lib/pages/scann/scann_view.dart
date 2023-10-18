@@ -2,31 +2,38 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_datawedge/flutter_datawedge.dart';
-import 'package:flutter_datawedge/models/action_result.dart';
+//import 'package:flutter_datawedge/models/action_result.dart';
 import 'package:flutter_datawedge/models/scan_result.dart';
 import 'package:flutter_datawedge/models/scanner_status.dart';
-import 'package:flutter_zebra_scanner_palette/utils/my_text_field.dart';
+import 'package:flutter_zebra_scanner_palette/pages/order/order_palett_view.dart';
+import 'package:get/get.dart';
+import '../../pages/order/order_palett_controller.dart';
+import '../../utils/my_text_field.dart';
 
 class ScannPage extends StatefulWidget {
   const ScannPage({super.key});
-  static const namedRoute = '/scan_page';
+  static const namedRoute = '/scan-page';
 
   @override
+  // ignore: library_private_types_in_public_api
   _ScannPageState createState() => _ScannPageState();
 }
 
 class _ScannPageState extends State<ScannPage> {
-  late FlutterDataWedge fdw;
-  late StreamSubscription<ScanResult> onScanResultListener;
-  late StreamSubscription<ScannerStatus> onScannerStatusListener;
-  late StreamSubscription<ActionResult> onScannerEventListener;
   late TextEditingController scannDataController;
+  late OrderPalettController orderPalCtrl;
 
   List<ScanResult> scanResults = [];
   String _lastStatus = '';
   Future<void>? initScannerResult;
+  late FlutterDataWedge fdw;
+  late StreamSubscription<ScanResult> onScanResultListener;
+  late StreamSubscription<ScannerStatus> onScannerStatusListener;
+  //late StreamSubscription<ActionResult> onScannerEventListener;
+
   @override
   void initState() {
+    orderPalCtrl = OrderPalettController.to;
     scannDataController = TextEditingController();
     initScannerResult = initScanner();
     super.initState();
@@ -35,10 +42,19 @@ class _ScannPageState extends State<ScannPage> {
   Future<void> initScanner() async {
     if (Platform.isAndroid) {
       fdw = FlutterDataWedge(profileName: 'FlutterDataWedge');
-      onScanResultListener = fdw.onScanResult.listen((result) => setState(() {
+      onScanResultListener = fdw.onScanResult.listen(
+        (result) => setState(
+          () {
             scanResults.add(result);
             scannDataController.text = result.data;
-          }));
+            orderPalCtrl.currOrderModel.value.szPaletteID =
+                scannDataController.text;
+            if (scannDataController.text != '') {
+              Get.offAndToNamed(OrderPalettPage.namedRoute);
+            }
+          },
+        ),
+      );
       onScannerStatusListener = fdw.onScannerStatus.listen(
           (status) => setState(() => _lastStatus = status.status.toString()));
       await fdw.initialize();
@@ -49,7 +65,7 @@ class _ScannPageState extends State<ScannPage> {
   void dispose() {
     onScanResultListener.cancel();
     onScannerStatusListener.cancel();
-    onScannerEventListener.cancel();
+    //onScannerEventListener.cancel();
     scannDataController.dispose();
     super.dispose();
   }

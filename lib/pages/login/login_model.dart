@@ -1,4 +1,3 @@
-
 class LoginUser {
   final String szUserName;
   final String szPassword;
@@ -23,17 +22,17 @@ class LoginUser {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'szUserName': szUserName,
-      'szPassword': szPassword,
-      'szlocation': szLocation,
+      'name': szUserName,
+      'password': szPassword,
+      'location': szLocation,
     };
   }
 
   factory LoginUser.fromMap(Map<String, dynamic> map) {
     return LoginUser(
-      szUserName: map['szUserName'] as String,
-      szPassword: map['szPassword'] as String,
-      szLocation: map['szLocation'] as String,
+      szUserName: map['name'] ?? '',
+      szPassword: map['password'] ?? '',
+      szLocation: map['location'] ?? '',
     );
   }
 

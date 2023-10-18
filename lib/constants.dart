@@ -1,9 +1,23 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_zebra_scanner_palette/pages/login/login_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../pages/login/login_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
 
+enum PalettenStatus {
+  eingang, //1
+  eingangLeer, //4
+  ausgang, //3
+  ausgangLeer, //5
+  umlagerung, //2
+}
 
+//HttpHeader Authentification
+var kBasicAuth =
+    'Basic ${base64.encode(utf8.encode('${dotenv.env['BASIC_AUTH_LOGIN_USER']}:${dotenv.env['BASIC_AUTH_LOGIN_PASSWORD']}'))}';
+var kHttpHeaderBasic = {HttpHeaders.authorizationHeader: kBasicAuth};
 
 var kLoginUserData = LoginUser();
 

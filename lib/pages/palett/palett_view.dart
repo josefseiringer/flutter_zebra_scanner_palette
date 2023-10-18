@@ -26,7 +26,7 @@ class PalettPage extends GetView<PalettController> {
               padding: const EdgeInsets.all(8),
               children: [
                 MyTextButton(
-                  onTab: () {},
+                  onTab: () => pCtrl.openOrderView(PalettenStatus.eingang),
                   labelText: 'Volle Palette einlagern...',
                   buttonWidth: displayWidth,
                   buttonHeight: displayButtonHeight,
@@ -45,7 +45,7 @@ class PalettPage extends GetView<PalettController> {
                       )
                     : SizedBox(height: pCtrl.mnVollEin.value),
                 MyTextButton(
-                  onTab: () {},
+                  onTab: () => pCtrl.openOrderView(PalettenStatus.eingangLeer),
                   labelText: 'Leere Palette einlagern...',
                   buttonWidth: displayWidth,
                   buttonHeight: displayButtonHeight,
@@ -63,7 +63,7 @@ class PalettPage extends GetView<PalettController> {
                         ))
                     : SizedBox(height: pCtrl.mnLeerEin.value),
                 MyTextButton(
-                  onTab: () {},
+                  onTab: () => pCtrl.openOrderView(PalettenStatus.ausgang),
                   labelText: 'Volle Palette auslagern...',
                   buttonWidth: displayWidth,
                   buttonHeight: displayButtonHeight,
@@ -82,7 +82,7 @@ class PalettPage extends GetView<PalettController> {
                       )
                     : SizedBox(height: pCtrl.mnVollAus.value),
                 MyTextButton(
-                  onTab: () {},
+                  onTab: () => pCtrl.openOrderView(PalettenStatus.ausgangLeer),
                   labelText: 'Leere Palette auslagern...',
                   buttonWidth: displayWidth,
                   buttonHeight: displayButtonHeight,
@@ -101,7 +101,7 @@ class PalettPage extends GetView<PalettController> {
                       )
                     : SizedBox(height: pCtrl.mnLeerAus.value),
                 MyTextButton(
-                  onTab: () {},
+                  onTab: () => pCtrl.openOrderView(PalettenStatus.umlagerung),
                   labelText: 'Palette umlagern...',
                   buttonWidth: displayWidth,
                   buttonHeight: displayButtonHeight,
