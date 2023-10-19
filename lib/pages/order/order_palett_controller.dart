@@ -43,7 +43,7 @@ class OrderPalettController extends GetxController {
       if (hasGpsLocation.isTrue) {
         locationData.value = conCtrl.locationData.value;
         currOrderModel.value.szGeoData =
-            '${conCtrl.latitude.value.substring(0, 8)},${conCtrl.longitude.value.substring(0, 8)}';
+            '${conCtrl.latitude.value.substring(0, 7)},${conCtrl.longitude.value.substring(0, 7)}';
         currOrderModel.value.szGeoString = conCtrl.rxGeoString.value;
         isLoading = false;
       }
@@ -107,8 +107,8 @@ class OrderPalettController extends GetxController {
       };
       var response = await client.post(getUriPalettLink,
           headers: kHttpHeaderBasic, body: params);
-      if (response.statusCode >= 200 && response.statusCode <= 204) {        
-        final responseUsers = response.body;       
+      if (response.statusCode >= 200 && response.statusCode <= 204) {
+        final responseUsers = response.body;
         kDisplaySnackBarSavePallet(responseUsers);
       } else {
         kDisplaySnackBar('Error Status is ${response.statusCode}');

@@ -5,6 +5,8 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:get/get.dart';
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
+import 'package:device_info_plus/device_info_plus.dart';
+import '../../services/location_service.dart';
 import '../constants.dart';
 
 class CurrentLocationController extends GetxController {
@@ -30,17 +32,32 @@ class CurrentLocationController extends GetxController {
 
 //Adresse des Standortes ermitteln
   Future<bool> getLocation() async {
-    var strasse = 'Ganglgutstrasse%131';
-    var country = 'AT';
-    //
     bool getLocation = false;
     var ptcApiKey = dotenv.env['PTV_API_KEY'];
-    //
-    //Get Address from Long and Latitude
-    var newGetLink =
-        'https://api.myptv.com/geocoding/v1/locations/by-text?searchText=$strasse&countryFilter=$country&apiKey=$ptcApiKey';
-    // String ptvGeoLink =
-    //     'https://api.myptv.com/geocoding/v1/locations/by-position/${latitude.value}/${longitude.value}?language=de&apiKey=$ptcApiKey';
+    
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    //print('Running on ${androidInfo.model}');
+    
+    String strasse = '';
+    String country = '';
+    String newGetLink = '';
+    
+    if (await LocationService().requestPermission() &&
+        androidInfo.model != 'MC33') {
+      final getLocationData = await LocationService().getCurrentLocation();
+      var lat = getLocationData.latitude;
+      var lon = getLocationData.longitude;
+    newGetLink =
+        'https://api.myptv.com/geocoding/v1/locations/by-position/${lat}/${lon}?language=de&apiKey=$ptcApiKey';
+    } else {
+      strasse = 'Ganglgutstrasse%131';
+      country = 'AT';
+      //Get Address from Long and Latitude
+      newGetLink =
+          'https://api.myptv.com/geocoding/v1/locations/by-text?searchText=$strasse&countryFilter=$country&apiKey=$ptcApiKey';
+    }
+    
     var client = http.Client();
     var response = await client.get(Uri.parse(newGetLink));
     //Response Data status
