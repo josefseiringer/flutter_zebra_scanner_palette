@@ -3,7 +3,7 @@ API_GET_LINK_USER='<Your Api Link to Palett Users>'
 # Add Params to Api Link in Order: paletteID=<PalettId>
 API__GET_LINK_PALETT_INFO='<Your Api Link to Palett Info>'
 
-# Add Params to Api Link in Order: paletteID=<ScannedID>&caseID=<1=Eingang,4=Eingang Leer,3=Ausgang,5=Ausgang Leer,2=Umlagerung>&direction=<O= Out,I=In>&location=<XXXXX>&zone=Stellplattz_xxx&geoData=<lat>,<lon>&geoString=<Musterstrasse>
+# Add Params to Api Link in Order: /<ScannedID>?caseID=<1=Eingang,4=Eingang Leer,3=Ausgang,5=Ausgang Leer,2=Umlagerung>&direction=<O= Out,I=In>&location=<XXXXX>&zone=Stellplattz_xxx&geoData=<lat>,<lon>&geoString=<Musterstrasse>
 API_PUT_LINK_PALETTE_TRACKING='<Your Api Link to Palett tracking Info>'
 
 BASIC_AUTH_LOGIN_USER='<Username>'

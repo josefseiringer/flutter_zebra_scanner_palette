@@ -5,8 +5,9 @@ import '../../services/order_model.dart';
 
 class PalettController extends GetxController {
   static PalettController get to => Get.find<PalettController>();
-  final currentOrderModel = OrderModel('', '', '', '', '', '', '').obs;
-  final szPallScanCode = 'PLM410510'.obs;
+  final currentOrderModel =
+      OrderModel('?', '?', '?', '?', '?', '?', '?', '?').obs;
+  final szPallScanCode = '?'.obs;
   final mnVollEin = 10.0.obs;
   final mnVollAus = 10.0.obs;
   final mnLeerEin = 10.0.obs;
@@ -20,6 +21,7 @@ class PalettController extends GetxController {
 
   @override
   void onInit() {
+    currentOrderModel.value = kOrderPalettData;
     expandingSizeBox();
     super.onInit();
   }
@@ -62,8 +64,9 @@ class PalettController extends GetxController {
   void onClose() {}
 
   openOrderView(PalettenStatus status) {
-    currentOrderModel.value
-        .currentOrderModel('?', status, 'TRAUN', '?', '?', '?');
-    Get.toNamed(OrderPalettPage.namedRoute);
+    currentOrderModel.value.currentOrderModel('?', status,
+        kLoginUserData.szLocation, '?', 'lat,lon?', 'street?', 'P');
+    kOrderPalettData = currentOrderModel.value;
+    Get.offAllNamed(OrderPalettPage.namedRoute);
   }
 }

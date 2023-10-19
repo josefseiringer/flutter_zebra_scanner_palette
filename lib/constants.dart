@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_zebra_scanner_palette/services/order_model.dart';
 import '../pages/login/login_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ var kBasicAuth =
 var kHttpHeaderBasic = {HttpHeaders.authorizationHeader: kBasicAuth};
 
 var kLoginUserData = LoginUser();
+var kOrderPalettData = OrderModel('?', '?', '?', '?', '?', '?', '?', '?');
 
 var kLetterSpacing = 2.0;
 
@@ -75,6 +77,14 @@ var kThemeData = ThemeData.light().copyWith(
 SnackbarController kDisplaySnackBar(String szInfoText) {
   return Get.snackbar('Info', szInfoText,
       backgroundColor: Colors.red[600],
+      snackPosition: SnackPosition.TOP,
+      colorText: Colors.white,
+      snackStyle: SnackStyle.GROUNDED);
+}
+
+SnackbarController kDisplaySnackBarBlue(String szInfoText) {
+  return Get.snackbar('Info', szInfoText,
+      backgroundColor: Colors.blue[300],
       snackPosition: SnackPosition.TOP,
       colorText: Colors.white,
       snackStyle: SnackStyle.GROUNDED);

@@ -21,60 +21,74 @@ class OrderPalettPage extends GetView<OrderPalettController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: <Widget>[
-            Container(
-              color: Colors.green.shade100,
-              padding: const EdgeInsets.all(10),
-              child: Obx(
-                () => orderPallCtrl.isLoading.value
-                    ? const Center(child: CircularProgressIndicator())
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                              'PalettenID: ${orderPallCtrl.currOrderModel.value.szPaletteID!}'),
-                          Text(
-                              'CaseId: ${orderPallCtrl.currOrderModel.value.szCaseId!}'),
-                          Text(
-                              'Direction: ${orderPallCtrl.currOrderModel.value.szDirection!}'),
-                          Text(
-                              'Zone: ${orderPallCtrl.currOrderModel.value.szZone!}'),
-                          Text(
-                              'GeoData: ${orderPallCtrl.currOrderModel.value.szGeoData!}'),
-                          Text(
-                              'GeoString: ${orderPallCtrl.currOrderModel.value.szGeoString!}'),
-                          Text(
-                              'Location: ${orderPallCtrl.currOrderModel.value.szLocation!}'),
-                        ],
-                      ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Container(
+                color: Colors.green.shade100,
+                padding: const EdgeInsets.all(10),
+                child: Obx(
+                  () => orderPallCtrl.isLoading.value
+                      ? const Center(child: CircularProgressIndicator())
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                'PalettenID: ${orderPallCtrl.currOrderModel.value.szPaletteID!}'),
+                            Text(
+                                'CaseId: ${orderPallCtrl.currOrderModel.value.szCaseId!}'),
+                            Text(
+                                'Direction: ${orderPallCtrl.currOrderModel.value.szDirection!}'),
+                            Text(
+                                'Zone: ${orderPallCtrl.currOrderModel.value.szZone!}'),
+                            Text(
+                                'GeoData: ${orderPallCtrl.currOrderModel.value.szGeoData!}'),
+                            Text(
+                                'GeoString: ${orderPallCtrl.currOrderModel.value.szGeoString!}'),
+                            Text(
+                                'Location: ${orderPallCtrl.currOrderModel.value.szLocation!}'),
+                            Text(
+                                'Pall/Zone: ${orderPallCtrl.currOrderModel.value.szScannPalletOrZone!}'),
+                          ],
+                        ),
+                ),
               ),
-            ),
-            SizedBox(height: spacer),
-            MyTextButton(
-                onTab: () => orderPallCtrl.goToScanPage(),
-                labelText: 'Scan Palette',
+              SizedBox(height: spacer),
+              MyTextButton(
+                  onTab: () => orderPallCtrl.goToScanPagePalette(),
+                  labelText: 'Palette scannen',
+                  buttonWidth: double.infinity,
+                  buttonHeight: widgetHeigth,
+                  buttonColor: buttonColor,
+                  buttonLabelColor: labelColor),
+              SizedBox(height: spacer),
+              MyTextButton(
+                  onTab: () => orderPallCtrl.goToScanPageZone(),
+                  labelText: 'Zone scannen',
+                  buttonWidth: double.infinity,
+                  buttonHeight: widgetHeigth,
+                  buttonColor: buttonColor,
+                  buttonLabelColor: labelColor),
+              SizedBox(height: spacer),
+              MyTextButton(
+                onTab: () => orderPallCtrl.saveAndExit(),
+                labelText: 'OK',
                 buttonWidth: double.infinity,
                 buttonHeight: widgetHeigth,
                 buttonColor: buttonColor,
-                buttonLabelColor: labelColor),
-            SizedBox(height: spacer),
-            MyTextButton(
-                onTab: () {},
-                labelText: 'Scan Zone',
+                buttonLabelColor: labelColor,
+              ),
+              SizedBox(height: spacer),
+              MyTextButton(
+                onTab: () => orderPallCtrl.exitToPage(),
+                labelText: 'Exit',
                 buttonWidth: double.infinity,
                 buttonHeight: widgetHeigth,
                 buttonColor: buttonColor,
-                buttonLabelColor: labelColor),
-            SizedBox(height: spacer),
-            MyTextButton(
-                onTab: () {},
-                labelText: 'Take Palette',
-                buttonWidth: double.infinity,
-                buttonHeight: widgetHeigth,
-                buttonColor: buttonColor,
-                buttonLabelColor: labelColor)
-          ],
+                buttonLabelColor: labelColor,
+              ),
+            ],
+          ),
         ),
       ),
     );

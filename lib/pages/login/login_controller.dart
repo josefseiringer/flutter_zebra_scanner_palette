@@ -36,7 +36,7 @@ class LoginController extends GetxController {
         kLoginUserData = resultUser;
         //Popup Snake Bar
         kDisplaySnackBarSavePallet(
-            'Login successfully!\n\nLogin User : ${kLoginUserData.szUserName}\nLocation :${kLoginUserData.szLocation}');
+            'Login successfully!\nLogin User : ${kLoginUserData.szUserName}\nLocation :${kLoginUserData.szLocation}');
         // go to PalettPage
         Get.offAllNamed(PalettPage.namedRoute);
       } else {

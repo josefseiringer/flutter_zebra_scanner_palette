@@ -23,7 +23,6 @@ class CurrentLocationController extends GetxController {
       hasInternet.value = true;
     } else {
       hasInternet.value = false;
-      kDisplaySnackBar('Bitte mobile Daten aktivieren!');
     }
     update();
     return hasInternet.value;
