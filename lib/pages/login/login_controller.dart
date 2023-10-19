@@ -49,11 +49,12 @@ class LoginController extends GetxController {
   }
 
   Future<void> _readUsers() async {
+    var client = http.Client();
     var linkUser = dotenv.env['API_GET_LINK_USER'];
     var getUserLink = Uri.parse(linkUser!);
     try {
       bIsLoading(true);
-      var response = await http.get(getUserLink, headers: kHttpHeaderBasic);
+      var response = await client.get(getUserLink, headers: kHttpHeaderBasic);
       if (response.statusCode == 200) {
         //data successfully
         //Parse the JSON data
@@ -71,6 +72,7 @@ class LoginController extends GetxController {
       kDisplaySnackBar('Error while getting data in $e');
     } finally {
       bIsLoading(false);
+      client.close();
     }
     update();
   }

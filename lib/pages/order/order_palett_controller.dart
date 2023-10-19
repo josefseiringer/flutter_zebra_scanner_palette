@@ -62,6 +62,7 @@ class OrderPalettController extends GetxController {
     Get.offAllNamed(PalettPage.namedRoute);
   }
 
+  //Open Scann Page
   void openScannPage() {
     Get.offAllNamed(ScannPage.namedRoute);
   }
@@ -92,24 +93,23 @@ class OrderPalettController extends GetxController {
     var client = http.Client();
     bool isSaving = false;
     var linkPalett = dotenv.env['API_PUT_LINK_PALETTE_TRACKING'];
-    linkPalett =
-        '$linkPalett${kOrderPalettData.szPaletteID}?caseID=${kOrderPalettData.szCaseId}&direction=${kOrderPalettData.szDirection}&location=${kOrderPalettData.szLocation}&zone=${kOrderPalettData.szZone}&geoData=${kOrderPalettData.szGeoData}&geoString=${kOrderPalettData.szGeoString}';
+    linkPalett = '$linkPalett${kOrderPalettData.szPaletteID}';
     var getUriPalettLink = Uri.parse(linkPalett);
-    // ignore: avoid_print
-    print(linkPalett);
     try {
       isSaving = true;
-      var response =
-          await client.put(getUriPalettLink, headers: kHttpHeaderBasic);
-      if (response.statusCode == 200) {
-        //data successfully
-        //Parse the JSON data
-        final responseUsers = response.body;
-        // ignore: avoid_print
-        print(responseUsers);
-        //final Map<String, dynamic> jsonData = jsonDecode(responseUsers);
-        //Convert the JSON data to a list of Dart objects
-        //final List<dynamic> mapData = jsonData['data']['users'];
+      var params = {
+        'caseID': kOrderPalettData.szCaseId,
+        'direction': kOrderPalettData.szDirection,
+        'location': kOrderPalettData.szLocation,
+        'zone': kOrderPalettData.szZone,
+        'geoData': kOrderPalettData.szGeoData,
+        'geoString': kOrderPalettData.szGeoString
+      };
+      var response = await client.post(getUriPalettLink,
+          headers: kHttpHeaderBasic, body: params);
+      if (response.statusCode >= 200 && response.statusCode <= 204) {        
+        final responseUsers = response.body;       
+        kDisplaySnackBarSavePallet(responseUsers);
       } else {
         kDisplaySnackBar('Error Status is ${response.statusCode}');
       }
