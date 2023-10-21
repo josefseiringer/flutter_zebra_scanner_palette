@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_zebra_scanner_palette/services/current_location_controller.dart';
 import 'package:get/get.dart';
+import '../services/current_location_controller.dart';
 import '../constants.dart';
 import '../pages/login/login_controller.dart';
 import '../http_overrides.dart';

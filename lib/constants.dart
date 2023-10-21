@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_zebra_scanner_palette/services/order_model.dart';
+import '../../services/order_model.dart';
 import '../pages/login/login_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:get/get.dart';
