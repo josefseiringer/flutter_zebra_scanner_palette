@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../pages/palett/palett_view.dart';
 import '../pages/scann/scann_view.dart';
 import '../pages/login/login_view.dart';
-import 'pages/order/order_palett_view.dart';
+import '../pages/order/order_palett_view.dart';
 
 class SampleRouts {
   static final samplePages = [

@@ -34,22 +34,31 @@ class CurrentLocationController extends GetxController {
   Future<bool> getLocation() async {
     bool getLocation = false;
     var ptcApiKey = dotenv.env['PTV_API_KEY'];
-    
+
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
     //print('Running on ${androidInfo.model}');
-    
+
     String strasse = '';
     String country = '';
     String newGetLink = '';
-    
+    var lat = 0.0;
+    var lon = 0.0;
+
     if (await LocationService().requestPermission() &&
         androidInfo.model != 'MC33') {
       final getLocationData = await LocationService().getCurrentLocation();
-      var lat = getLocationData.latitude;
-      var lon = getLocationData.longitude;
-    newGetLink =
-        'https://api.myptv.com/geocoding/v1/locations/by-position/${lat}/${lon}?language=de&apiKey=$ptcApiKey';
+      if (getLocationData.latitude != null && getLocationData.latitude! > 0.0) {
+        lat = getLocationData.latitude!;
+      }
+      if (getLocationData.longitude != null &&
+          getLocationData.longitude! > 0.0) {
+        lon = getLocationData.longitude!;
+      }
+      if (lat > 0.0 && lon > 0.0) {
+        newGetLink =
+            'https://api.myptv.com/geocoding/v1/locations/by-position/$lat/$lon?language=de&apiKey=$ptcApiKey';
+      }
     } else {
       strasse = 'Ganglgutstrasse%131';
       country = 'AT';
@@ -57,7 +66,7 @@ class CurrentLocationController extends GetxController {
       newGetLink =
           'https://api.myptv.com/geocoding/v1/locations/by-text?searchText=$strasse&countryFilter=$country&apiKey=$ptcApiKey';
     }
-    
+
     var client = http.Client();
     var response = await client.get(Uri.parse(newGetLink));
     //Response Data status
