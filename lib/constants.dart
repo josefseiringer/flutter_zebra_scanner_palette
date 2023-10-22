@@ -25,6 +25,8 @@ var kOrderPalettData = OrderModel('?', '?', '?', '?', '?', '?', '?', '?');
 
 var kLetterSpacing = 2.0;
 
+var kSpaceHeight = 10.0;
+
 var kFontSizeDouble = 15.0;
 
 var kFontSizeHeaderDouble = 20.0;
@@ -106,15 +108,15 @@ var kTextStyleDropDownList = TextStyle(
   fontStyle: FontStyle.normal,
 );
 
-var kTestStyleDataText = TextStyle(
+var kTextStyleDataText = TextStyle(
   fontSize: kFontSizeDouble,
   fontFamily: kFontFamily,
 );
-var kTestStyleHeaderTextBold = TextStyle(
+var kTextStyleHeaderTextBold = TextStyle(
     fontSize: kFontSizeHeaderDouble,
     fontFamily: kFontFamily,
     fontWeight: FontWeight.bold);
-var kTestStyleDataTextError = TextStyle(
+var kTextStyleDataTextError = TextStyle(
   fontSize: kFontSizeDouble,
   fontFamily: kFontFamily,
   color: Colors.red,
@@ -155,9 +157,19 @@ var kContainerAuswahlPlatzDecoration = BoxDecoration(
 
 var kContainerBoxDecorationGreen = BoxDecoration(
   color: Colors.green.shade100,
-  borderRadius: BorderRadius.circular(20.0),
+  borderRadius: BorderRadius.circular(10.0),
   border: Border.all(
     width: 3.0,
     color: Colors.green.shade800,
   ),
+);
+//MyContainerImageButtonStyles
+var kContainerButtonColor = Colors.blue.shade500;
+var kContainerlabelColor = Colors.grey.shade300;
+var kContainerBorderColor = Colors.blue.shade900;
+
+var kTextStyleContainerInhalt = TextStyle(
+  fontSize: kFontSizeDouble,
+  fontFamily: kFontFamily,
+  color: kContainerlabelColor,
 );

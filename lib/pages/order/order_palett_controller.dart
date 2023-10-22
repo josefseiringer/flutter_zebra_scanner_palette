@@ -64,7 +64,7 @@ class OrderPalettController extends GetxController {
 
   //Open Scann Page
   void openScannPage() {
-    Get.offAllNamed(ScannPage.namedRoute);
+    Get.toNamed(ScannPage.namedRoute);
   }
 
   // Go to Scann Page

@@ -13,8 +13,6 @@ class OrderPalettPage extends GetView<OrderPalettController> {
     var orderPallCtrl = controller;
     var spacer = 10.0;
     var widgetHeigth = 50.0;
-    var buttonColor = Colors.blue.shade500;
-    var labelColor = Colors.grey.shade200;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -60,24 +58,24 @@ class OrderPalettPage extends GetView<OrderPalettController> {
                   labelText: 'Palette scannen',
                   buttonWidth: double.infinity,
                   buttonHeight: widgetHeigth,
-                  buttonColor: buttonColor,
-                  buttonLabelColor: labelColor),
+                  buttonColor: kContainerButtonColor,
+                  buttonLabelColor: kContainerlabelColor),
               SizedBox(height: spacer),
               MyTextButton(
                   onTab: () => orderPallCtrl.goToScanPageZone(),
                   labelText: 'Zone scannen',
                   buttonWidth: double.infinity,
                   buttonHeight: widgetHeigth,
-                  buttonColor: buttonColor,
-                  buttonLabelColor: labelColor),
+                  buttonColor: kContainerButtonColor,
+                  buttonLabelColor: kContainerlabelColor),
               SizedBox(height: spacer),
               MyTextButton(
                 onTab: () => orderPallCtrl.saveAndExit(),
                 labelText: 'OK',
                 buttonWidth: double.infinity,
                 buttonHeight: widgetHeigth,
-                buttonColor: buttonColor,
-                buttonLabelColor: labelColor,
+                buttonColor: kContainerButtonColor,
+                buttonLabelColor: kContainerlabelColor,
               ),
               SizedBox(height: spacer),
               MyTextButton(
@@ -85,8 +83,8 @@ class OrderPalettPage extends GetView<OrderPalettController> {
                 labelText: 'Exit',
                 buttonWidth: double.infinity,
                 buttonHeight: widgetHeigth,
-                buttonColor: buttonColor,
-                buttonLabelColor: labelColor,
+                buttonColor: kContainerButtonColor,
+                buttonLabelColor: kContainerlabelColor,
               ),
             ],
           ),

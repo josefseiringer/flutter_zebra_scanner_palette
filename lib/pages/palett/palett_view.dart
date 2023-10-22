@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zebra_scanner_palette/pages/login/login_view.dart';
+import 'package:flutter_zebra_scanner_palette/utils/my_cont_image_button.dart';
 import 'package:get/get.dart';
 import 'palett_controller.dart';
-import '../../utils/my_text_button.dart';
 import '../../constants.dart';
 
 class PalettPage extends GetView<PalettController> {
@@ -11,116 +12,46 @@ class PalettPage extends GetView<PalettController> {
 
   @override
   Widget build(BuildContext context) {
-    var displayWidth = MediaQuery.of(context).size.width;
-    var displayButtonHeight = 50.0;
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Palettenadministration'),
+        actions: [
+          IconButton(
+              onPressed: () => Get.offAndToNamed(LoginPage.namedRoute),
+              icon: const Icon(Icons.exit_to_app))
+        ],
       ),
       body: SafeArea(
         child: GetBuilder<PalettController>(
-          builder: (pCtrl) => Obx(
-            () => ListView(
-              padding: const EdgeInsets.all(8),
-              children: [
-                MyTextButton(
+          builder: (pCtrl) => ListView(
+            padding: const EdgeInsets.all(8),
+            children: [
+              MyContainerImageButton(
+                  pathToImage: 'lib/images/palletFull.png',
                   onTab: () => pCtrl.openOrderView(PalettenStatus.eingang),
-                  labelText: 'Volle Palette einlagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                pCtrl.bVollEin.value
-                    ? SizedBox(
-                        height: pCtrl.mnVollEin.value,
-                        child: Center(
-                          child: Text(
-                            pCtrl.szPallScanCode.value,
-                            style: kTestStyleDataText,
-                          ),
-                        ),
-                      )
-                    : SizedBox(height: pCtrl.mnVollEin.value),
-                MyTextButton(
+                  labelText: 'Volle Palette einlagern...'),
+              SizedBox(height: kSpaceHeight),
+              MyContainerImageButton(
+                  pathToImage: 'lib/images/palletEmpty.png',
                   onTab: () => pCtrl.openOrderView(PalettenStatus.eingangLeer),
-                  labelText: 'Leere Palette einlagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                pCtrl.bLeerEin.value
-                    ? SizedBox(
-                        height: pCtrl.mnLeerEin.value,
-                        child: Center(
-                          child: Text(
-                            pCtrl.szPallScanCode.value,
-                            style: kTestStyleDataText,
-                          ),
-                        ))
-                    : SizedBox(height: pCtrl.mnLeerEin.value),
-                MyTextButton(
+                  labelText: 'Leere Palette einlagern...'),
+              SizedBox(height: kSpaceHeight),
+              MyContainerImageButton(
+                  pathToImage: 'lib/images/palletFull.png',
                   onTab: () => pCtrl.openOrderView(PalettenStatus.ausgang),
-                  labelText: 'Volle Palette auslagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                pCtrl.bVollAus.value
-                    ? SizedBox(
-                        height: pCtrl.mnVollAus.value,
-                        child: Center(
-                          child: Text(
-                            pCtrl.szPallScanCode.value,
-                            style: kTestStyleDataText,
-                          ),
-                        ),
-                      )
-                    : SizedBox(height: pCtrl.mnVollAus.value),
-                MyTextButton(
+                  labelText: 'Volle Palette auslagern...'),
+              SizedBox(height: kSpaceHeight),
+              MyContainerImageButton(
+                  pathToImage: 'lib/images/palletEmpty.png',
                   onTab: () => pCtrl.openOrderView(PalettenStatus.ausgangLeer),
-                  labelText: 'Leere Palette auslagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                pCtrl.bLeerAus.value
-                    ? SizedBox(
-                        height: pCtrl.mnLeerAus.value,
-                        child: Center(
-                          child: Text(
-                            pCtrl.szPallScanCode.value,
-                            style: kTestStyleDataText,
-                          ),
-                        ),
-                      )
-                    : SizedBox(height: pCtrl.mnLeerAus.value),
-                MyTextButton(
+                  labelText: 'Leere Palette auslagern...'),
+              SizedBox(height: kSpaceHeight),
+              MyContainerImageButton(
+                  pathToImage: 'lib/images/palletFull.png',
                   onTab: () => pCtrl.openOrderView(PalettenStatus.umlagerung),
-                  labelText: 'Palette umlagern...',
-                  buttonWidth: displayWidth,
-                  buttonHeight: displayButtonHeight,
-                  buttonColor: Colors.blue.shade600,
-                  buttonLabelColor: Colors.grey.shade200,
-                ),
-                pCtrl.bPallUm.value
-                    ? SizedBox(
-                        height: pCtrl.mnPallUm.value,
-                        child: Center(
-                          child: Text(
-                            pCtrl.szPallScanCode.value,
-                            style: kTestStyleDataText,
-                          ),
-                        ),
-                      )
-                    : SizedBox(height: pCtrl.mnPallUm.value),
-              ],
-            ),
+                  labelText: 'Palette umlagern...'),
+            ],
           ),
         ),
       ),

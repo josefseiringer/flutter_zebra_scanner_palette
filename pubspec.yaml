@@ -31,3 +31,4 @@ flutter:
   assets:
     - lib/mock/user.json
     - lib/.env
+    - lib/images/

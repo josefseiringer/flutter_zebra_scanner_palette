@@ -67,7 +67,7 @@ class _ScannPageState extends State<ScannPage> {
                   kOrderPalettData.szZone = scannText;
                 }
               }
-              Get.offAllNamed(OrderPalettPage.namedRoute);
+              Get.offAndToNamed(OrderPalettPage.namedRoute);
             }
           },
         ),
@@ -90,7 +90,7 @@ class _ScannPageState extends State<ScannPage> {
               kOrderPalettData.szZone = scannText;
             }
           }
-          Get.offAllNamed(OrderPalettPage.namedRoute);
+          Get.offAndToNamed(OrderPalettPage.namedRoute);
         }
       },
     );
