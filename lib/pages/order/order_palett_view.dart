@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../constants.dart';
 import '../../utils/my_text_button.dart';
 import 'order_palett_controller.dart';
 
@@ -25,7 +26,7 @@ class OrderPalettPage extends GetView<OrderPalettController> {
           child: Column(
             children: <Widget>[
               Container(
-                color: Colors.green.shade100,
+                decoration: kContainerBoxDecorationGreen,
                 padding: const EdgeInsets.all(10),
                 child: Obx(
                   () => orderPallCtrl.isLoading.value
@@ -35,20 +36,20 @@ class OrderPalettPage extends GetView<OrderPalettController> {
                           children: [
                             Text(
                                 'PalettenID: ${orderPallCtrl.currOrderModel.value.szPaletteID!}'),
-                            Text(
-                                'CaseId: ${orderPallCtrl.currOrderModel.value.szCaseId!}'),
-                            Text(
-                                'Direction: ${orderPallCtrl.currOrderModel.value.szDirection!}'),
+                            // Text(
+                            //     'CaseId: ${orderPallCtrl.currOrderModel.value.szCaseId!}'),
+                            // Text(
+                            //     'Direction: ${orderPallCtrl.currOrderModel.value.szDirection!}'),
                             Text(
                                 'Zone: ${orderPallCtrl.currOrderModel.value.szZone!}'),
-                            Text(
-                                'GeoData: ${orderPallCtrl.currOrderModel.value.szGeoData!}'),
-                            Text(
-                                'GeoString: ${orderPallCtrl.currOrderModel.value.szGeoString!}'),
+                            // Text(
+                            //     'GeoData: ${orderPallCtrl.currOrderModel.value.szGeoData!}'),
+                            // Text(
+                            //     'GeoString: ${orderPallCtrl.currOrderModel.value.szGeoString!}'),
                             Text(
                                 'Location: ${orderPallCtrl.currOrderModel.value.szLocation!}'),
-                            Text(
-                                'Pall/Zone: ${orderPallCtrl.currOrderModel.value.szScannPalletOrZone!}'),
+                            // Text(
+                            //     'Pall/Zone: ${orderPallCtrl.currOrderModel.value.szScannPalletOrZone!}'),
                           ],
                         ),
                 ),

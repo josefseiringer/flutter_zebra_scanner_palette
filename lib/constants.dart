@@ -152,3 +152,12 @@ var kContainerAuswahlPlatzDecoration = BoxDecoration(
   ),
   borderRadius: const BorderRadius.all(Radius.circular(10)),
 );
+
+var kContainerBoxDecorationGreen = BoxDecoration(
+  color: Colors.green.shade100,
+  borderRadius: BorderRadius.circular(20.0),
+  border: Border.all(
+    width: 3.0,
+    color: Colors.green.shade800,
+  ),
+);

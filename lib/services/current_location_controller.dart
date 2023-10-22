@@ -60,7 +60,7 @@ class CurrentLocationController extends GetxController {
             'https://api.myptv.com/geocoding/v1/locations/by-position/$lat/$lon?language=de&apiKey=$ptcApiKey';
       }
     } else {
-      strasse = 'Ganglgutstrasse%131';
+      strasse = 'Ganglgutstrasse 131';
       country = 'AT';
       //Get Address from Long and Latitude
       newGetLink =
@@ -82,7 +82,7 @@ class CurrentLocationController extends GetxController {
         locationData.value =
             mapOfAddressfromPosition['address']['city'].toString();
         rxGeoString.value =
-            mapOfAddressfromPosition['address']['street'].toString();
+            '${mapOfAddressfromPosition['address']['postalCode']} ${mapOfAddressfromPosition['address']['city']} ${mapOfAddressfromPosition['address']['street']} ${mapOfAddressfromPosition['address']['houseNumber']}';
         longitude.value = mapOfAddressfromPosition['referencePosition']
                 ['longitude']
             .toString();
