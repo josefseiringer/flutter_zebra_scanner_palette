@@ -13,7 +13,7 @@ class MyTrackListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8),
-      margin: const EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.only(bottom: 5),
       decoration: BoxDecoration(
         color: kContainerlabelColor,
       ),
@@ -21,8 +21,7 @@ class MyTrackListTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundColor: kCircularAvatarColor,
-            foregroundColor: kContainerlabelColor,
+            backgroundColor: kCircularAvatarBackgroundColor,
             radius: 30,
             child: Image(
               image: itemData.szCaseID == '1' || itemData.szCaseID == '3'
@@ -31,15 +30,30 @@ class MyTrackListTile extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20.0),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(itemData.szDate!),
-              Text(itemData.szTime!),
-              Text(itemData.szLocation!),
-              Text(itemData.szZoneInfo!),
-            ],
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                border: Border.all(
+                  color: Colors.grey.shade500,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(30.0)),
+            padding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+              top: 5,
+              bottom: 5,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '${itemData.szDate!.substring(0, (itemData.szDate!.length) - 5)}, ${itemData.szTime!.substring(0, (itemData.szTime!.length) - 3)}',
+                ),
+                Text(itemData.szLocation!),
+              ],
+            ),
           ),
         ],
       ),

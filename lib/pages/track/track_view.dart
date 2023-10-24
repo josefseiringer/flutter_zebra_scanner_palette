@@ -24,11 +24,27 @@ class TrackPage extends GetView<TrackController> {
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : ListView.builder(
-                  itemCount: trackCtrl.trackingList.length,
-                  itemBuilder: (context, index) => MyTrackListTile(
-                    itemData: trackCtrl.trackingList[index],
-                  ),
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      height: 50,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Sendungsverlauf',
+                            style: kTextStyleHeaderTextBold),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: trackCtrl.trackingList.length,
+                        itemBuilder: (context, index) => MyTrackListTile(
+                          itemData: trackCtrl.trackingList[index],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
         ),
       ),

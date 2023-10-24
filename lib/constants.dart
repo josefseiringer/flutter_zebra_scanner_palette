@@ -167,7 +167,7 @@ var kContainerBoxDecorationGreen = BoxDecoration(
 //MyContainerImageButtonStyles
 var kContainerButtonColor = Colors.blue.shade500;
 var kContainerlabelColor = Colors.grey.shade300;
-var kCircularAvatarColor = Colors.grey.shade500;
+var kCircularAvatarBackgroundColor = Colors.grey.shade400;
 var kContainerBorderColor = Colors.blue.shade900;
 
 var kTextStyleContainerInhalt = TextStyle(
