@@ -86,6 +86,17 @@ class OrderModel {
           szGeoString = geoString,
           szScannPalletOrZone = scannPalletOrZone,
         );
+      case PalettenStatus.tracking:
+        return OrderModel(
+          szCaseId = '?',
+          szDirection = '?',
+          szPaletteID = paletteId,
+          szLocation = location,
+          szZone = zone,
+          szGeoData = geoData,
+          szGeoString = geoString,
+          szScannPalletOrZone = scannPalletOrZone,
+        );
       default:
         return null;
     }

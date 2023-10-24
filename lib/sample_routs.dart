@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import '../pages/track/track_view.dart';
 import '../pages/palett/palett_view.dart';
 import '../pages/scann/scann_view.dart';
 import '../pages/login/login_view.dart';
@@ -22,7 +23,11 @@ class SampleRouts {
     GetPage(
       name: OrderPalettPage.namedRoute,
       page: () => const OrderPalettPage(),
-    ),     
+    ),
+    GetPage(
+      name: TrackPage.namedRoute,
+      page: () => const TrackPage(),
+    ),    
   ];
 }
 

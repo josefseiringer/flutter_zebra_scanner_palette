@@ -34,20 +34,20 @@ class OrderPalettPage extends GetView<OrderPalettController> {
                           children: [
                             Text(
                                 'PalettenID: ${orderPallCtrl.currOrderModel.value.szPaletteID!}'),
-                            // Text(
-                            //     'CaseId: ${orderPallCtrl.currOrderModel.value.szCaseId!}'),
-                            // Text(
-                            //     'Direction: ${orderPallCtrl.currOrderModel.value.szDirection!}'),
+                            Text(
+                                'CaseId: ${orderPallCtrl.currOrderModel.value.szCaseId!}'),
+                            Text(
+                                'Direction: ${orderPallCtrl.currOrderModel.value.szDirection!}'),
                             Text(
                                 'Zone: ${orderPallCtrl.currOrderModel.value.szZone!}'),
-                            // Text(
-                            //     'GeoData: ${orderPallCtrl.currOrderModel.value.szGeoData!}'),
-                            // Text(
-                            //     'GeoString: ${orderPallCtrl.currOrderModel.value.szGeoString!}'),
+                            Text(
+                                'GeoData: ${orderPallCtrl.currOrderModel.value.szGeoData!}'),
+                            Text(
+                                'GeoString: ${orderPallCtrl.currOrderModel.value.szGeoString!}'),
                             Text(
                                 'Location: ${orderPallCtrl.currOrderModel.value.szLocation!}'),
-                            // Text(
-                            //     'Pall/Zone: ${orderPallCtrl.currOrderModel.value.szScannPalletOrZone!}'),
+                            Text(
+                                'Pall/Zone: ${orderPallCtrl.currOrderModel.value.szScannPalletOrZone!}'),
                           ],
                         ),
                 ),

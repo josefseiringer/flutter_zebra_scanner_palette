@@ -10,6 +10,7 @@ import '../sample_routs.dart';
 import '../pages/login/login_view.dart';
 import '../pages/palett/palett_controller.dart';
 import '../pages/order/order_palett_controller.dart';
+import '../pages/track/track_controller.dart';
 
 void main() async {
   await dotenv.load(fileName: 'lib/.env');
@@ -18,6 +19,7 @@ void main() async {
   Get.lazyPut<PalettController>(() => PalettController(), fenix: true);
   Get.lazyPut<OrderPalettController>(() => OrderPalettController(), fenix: true);
   Get.lazyPut<CurrentLocationController>(() => CurrentLocationController(), fenix: true);
+  Get.lazyPut<TrackController>(() => TrackController(), fenix: true);
   return runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

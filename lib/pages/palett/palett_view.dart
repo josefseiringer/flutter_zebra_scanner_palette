@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zebra_scanner_palette/pages/login/login_view.dart';
-import 'package:flutter_zebra_scanner_palette/utils/my_cont_image_button.dart';
 import 'package:get/get.dart';
 import 'palett_controller.dart';
+import '../../pages/login/login_view.dart';
+import '../../utils/my_cont_image_button.dart';
+import '../../utils/my_text_button.dart';
 import '../../constants.dart';
 
 class PalettPage extends GetView<PalettController> {
@@ -51,6 +52,15 @@ class PalettPage extends GetView<PalettController> {
                   pathToImage: 'lib/images/palletFull.png',
                   onTab: () => pCtrl.openOrderView(PalettenStatus.umlagerung),
                   labelText: 'Palette umlagern...'),
+              SizedBox(height: kSpaceHeight),
+              MyTextButton(
+                buttonColor: kContainerButtonColor,
+                buttonHeight: 70.0,
+                buttonLabelColor: kContainerlabelColor,
+                buttonWidth: double.infinity,
+                labelText: 'Tracking Info',
+                onTab: () => pCtrl.goToTracking(PalettenStatus.tracking),
+              )
             ],
           ),
         ),

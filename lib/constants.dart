@@ -13,6 +13,7 @@ enum PalettenStatus {
   ausgang, //3
   ausgangLeer, //5
   umlagerung, //2
+  tracking,
 }
 
 //HttpHeader Authentification
@@ -166,6 +167,7 @@ var kContainerBoxDecorationGreen = BoxDecoration(
 //MyContainerImageButtonStyles
 var kContainerButtonColor = Colors.blue.shade500;
 var kContainerlabelColor = Colors.grey.shade300;
+var kCircularAvatarColor = Colors.grey.shade500;
 var kContainerBorderColor = Colors.blue.shade900;
 
 var kTextStyleContainerInhalt = TextStyle(
@@ -173,3 +175,7 @@ var kTextStyleContainerInhalt = TextStyle(
   fontFamily: kFontFamily,
   color: kContainerlabelColor,
 );
+
+//My Track List Tile
+var kContainerBackgroundColor = Colors.grey.shade700;
+var kListTileHeight = 80.0;

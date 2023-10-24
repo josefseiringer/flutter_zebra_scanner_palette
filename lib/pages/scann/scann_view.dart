@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datawedge/flutter_datawedge.dart';
 //import 'package:flutter_datawedge/models/action_result.dart';
 import 'package:flutter_datawedge/models/scan_result.dart';
+import 'package:flutter_zebra_scanner_palette/pages/track/track_view.dart';
 import '../../constants.dart';
 //import 'package:flutter_datawedge/models/scanner_status.dart';
 import '../../pages/order/order_palett_view.dart';
@@ -50,6 +51,32 @@ class _ScannPageState extends State<ScannPage> {
     super.dispose();
   }
 
+  void onScanProcessing() {
+    bool isTracking = false;
+    if (scannDataController.text != '') {
+      var scannText = scannDataController.text;
+      if (kOrderPalettData.szScannPalletOrZone == 'P') {
+        kOrderPalettData.szPaletteID = scannText;
+        isTracking = false;
+      } else {
+        if (kOrderPalettData.szScannPalletOrZone == 'Z') {
+          kOrderPalettData.szZone = scannText;
+          isTracking = false;
+        } else {
+          if (kOrderPalettData.szScannPalletOrZone == 'T') {
+            kOrderPalettData.szPaletteID = scannText;
+            isTracking = true;
+          }
+        }
+      }
+      if (isTracking) {
+        Get.offAndToNamed(TrackPage.namedRoute);
+      } else {
+        Get.offAndToNamed(OrderPalettPage.namedRoute);
+      }
+    }
+  }
+
   Future<void> initScanner() async {
     if (Platform.isAndroid) {
       fdw = FlutterDataWedge(profileName: 'FlutterDataWedge');
@@ -58,17 +85,7 @@ class _ScannPageState extends State<ScannPage> {
           () {
             scanResults.add(result);
             scannDataController.text = result.data;
-            if (scannDataController.text != '') {
-              var scannText = scannDataController.text;
-              if (kOrderPalettData.szScannPalletOrZone == 'P') {
-                kOrderPalettData.szPaletteID = scannText;
-              } else {
-                if (kOrderPalettData.szScannPalletOrZone == 'Z') {
-                  kOrderPalettData.szZone = scannText;
-                }
-              }
-              Get.offAndToNamed(OrderPalettPage.namedRoute);
-            }
+            onScanProcessing();
           },
         ),
       );
@@ -81,17 +98,7 @@ class _ScannPageState extends State<ScannPage> {
   void orderManually() {
     setState(
       () {
-        if (scannDataController.text != '') {
-          var scannText = scannDataController.text;
-          if (kOrderPalettData.szScannPalletOrZone == 'P') {
-            kOrderPalettData.szPaletteID = scannText;
-          } else {
-            if (kOrderPalettData.szScannPalletOrZone == 'Z') {
-              kOrderPalettData.szZone = scannText;
-            }
-          }
-          Get.offAndToNamed(OrderPalettPage.namedRoute);
-        }
+        onScanProcessing();
       },
     );
   }

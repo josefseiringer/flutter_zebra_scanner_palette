@@ -93,7 +93,7 @@ class OrderPalettController extends GetxController {
     var client = http.Client();
     bool isSaving = false;
     var linkPalett = dotenv.env['API_PUT_LINK_PALETTE_TRACKING'];
-    linkPalett = '$linkPalett${kOrderPalettData.szPaletteID}';
+    linkPalett = '$linkPalett/${kOrderPalettData.szPaletteID}';
     var getUriPalettLink = Uri.parse(linkPalett);
     try {
       isSaving = true;
