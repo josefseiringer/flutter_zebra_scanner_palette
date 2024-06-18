@@ -31,9 +31,9 @@ class MyTextButton extends StatelessWidget {
           style: ButtonStyle(
             alignment: Alignment.center,
             backgroundColor:
-                MaterialStateProperty.all<Color>(kContainerButtonColor),
+                WidgetStateProperty.all<Color>(kContainerButtonColor),
             foregroundColor:
-                MaterialStateProperty.all<Color>(kContainerlabelColor),
+                WidgetStateProperty.all<Color>(kContainerlabelColor),
           ),
           onPressed: onTab,
           child: Text(
