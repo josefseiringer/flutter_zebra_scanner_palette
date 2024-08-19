@@ -10,14 +10,14 @@ class MyTextField extends StatelessWidget {
   final double mnTextfieldHeight;
 
   const MyTextField({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.suffixIcon,
     required this.myController,
     required this.myTextInputType,
     required this.bObscureText,
     required this.mnTextfieldHeight,
-  }) : super(key: key);
+  });
 
   
 

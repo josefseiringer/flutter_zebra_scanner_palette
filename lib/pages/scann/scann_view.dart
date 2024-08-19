@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_datawedge/flutter_datawedge.dart';
 //import 'package:flutter_datawedge/models/action_result.dart';
-import 'package:flutter_datawedge/models/scan_result.dart';
 import 'package:flutter_zebra_scanner_palette/pages/track/track_view.dart';
 import '../../constants.dart';
 //import 'package:flutter_datawedge/models/scanner_status.dart';
@@ -79,7 +78,7 @@ class _ScannPageState extends State<ScannPage> {
 
   Future<void> initScanner() async {
     if (Platform.isAndroid) {
-      fdw = FlutterDataWedge(profileName: 'FlutterDataWedge');
+      fdw = FlutterDataWedge();
       onScanResultListener = fdw.onScanResult.listen(
         (result) => setState(
           () {

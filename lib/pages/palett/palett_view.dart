@@ -9,7 +9,7 @@ import '../../constants.dart';
 class PalettPage extends GetView<PalettController> {
   static const namedRoute = '/palett-page';
 
-  const PalettPage({Key? key}) : super(key: key);
+  const PalettPage({super.key});
 
   @override
   Widget build(BuildContext context) {

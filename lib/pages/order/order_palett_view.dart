@@ -6,7 +6,7 @@ import 'order_palett_controller.dart';
 
 class OrderPalettPage extends GetView<OrderPalettController> {
   static const namedRoute = '/order-palett-page';
-  const OrderPalettPage({Key? key}) : super(key: key);
+  const OrderPalettPage({super.key});
 
   @override
   Widget build(BuildContext context) {

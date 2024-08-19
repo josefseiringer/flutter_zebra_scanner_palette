@@ -6,7 +6,7 @@ import '../../utils/my_track_list_tile.dart';
 
 class TrackPage extends GetView<TrackController> {
   static const namedRoute = '/track-page';
-  const TrackPage({Key? key}) : super(key: key);
+  const TrackPage({super.key});
 
   @override
   Widget build(BuildContext context) {

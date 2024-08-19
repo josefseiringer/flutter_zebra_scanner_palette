@@ -7,7 +7,7 @@ import '../../utils/my_text_field.dart';
 import '../../constants.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
   static const namedRoute = '/login-page';
 
   @override
