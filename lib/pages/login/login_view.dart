@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
               ? const Center(child: CircularProgressIndicator())
               : Center(
                   child: Container(
-                    width: screenWidth - 100,
+                    //width: screenWidth - 100,
                     height: 210,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),

@@ -35,7 +35,6 @@ class PalettPage extends GetView<PalettController> {
               SizedBox(height: kSpaceHeight),
               MyContainerImageButton(
                   pathToImage: 'lib/images/palletEmpty.png',
-                  borderRadius: 25.0,
                   onTab: () => pCtrl.openOrderView(PalettenStatus.eingangLeer),
                   labelText: 'Leere Palette einlagern...'),
               SizedBox(height: kSpaceHeight),
