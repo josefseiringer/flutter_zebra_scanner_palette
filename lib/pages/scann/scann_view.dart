@@ -152,6 +152,7 @@ class _ScannPageState extends State<ScannPage> {
                       buttonHeight: widgetHeight,
                       buttonColor: buttonColor,
                       buttonLabelColor: buttonLabelTextColor,
+                      borderRadius: 25.0,
                     ),
 
                     // SizedBox(

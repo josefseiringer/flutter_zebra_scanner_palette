@@ -35,6 +35,7 @@ class PalettPage extends GetView<PalettController> {
               SizedBox(height: kSpaceHeight),
               MyContainerImageButton(
                   pathToImage: 'lib/images/palletEmpty.png',
+                  borderRadius: 25.0,
                   onTab: () => pCtrl.openOrderView(PalettenStatus.eingangLeer),
                   labelText: 'Leere Palette einlagern...'),
               SizedBox(height: kSpaceHeight),
@@ -58,6 +59,7 @@ class PalettPage extends GetView<PalettController> {
                 buttonHeight: 70.0,
                 buttonLabelColor: kContainerlabelColor,
                 buttonWidth: double.infinity,
+                borderRadius: 35.0,
                 labelText: 'Tracking Info',
                 onTab: () => pCtrl.goToTracking(PalettenStatus.tracking),
               )

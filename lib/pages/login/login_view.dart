@@ -13,48 +13,64 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+    //var screenHeight = MediaQuery.of(context).size.height;
     var lCtrl = LoginController.to;
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Login to Palett App'),
-      ),
-      body: SafeArea(
-        child: Obx(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Login to Palett App'),
+        ),
+        body: Obx(
           () => lCtrl.bIsLoading.isTrue
               ? const Center(child: CircularProgressIndicator())
-              : ListView(
-                  padding: kPaddingAll,
-                  children: <Widget>[
-                    Center(
-                      child: DropDownUser(
-                        onChangeUser: lCtrl.szLoginUser,
-                        loginUsers: lCtrl.asyncLoginUsers,
+              : Center(
+                  child: Container(
+                    width: screenWidth - 100,
+                    height: 210,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                        width: 2.0,
+                        color: Colors.grey.shade500,
                       ),
+                      color: Colors.grey.shade100,
                     ),
-                    const SizedBox(height: 20),
-                    Center(
-                      child: MyTextField(
-                        bObscureText: true,
-                        hintText: 'Password',
-                        myController: lCtrl.passwordController.value,
-                        mnTextfieldHeight: 50.0,
-                        myTextInputType: TextInputType.visiblePassword,
-                        suffixIcon: const Icon(Icons.password),
-                      ),
+                    child: ListView(
+                      padding: kPaddingAll,
+                      children: <Widget>[
+                        Center(
+                          child: DropDownUser(
+                            onChangeUser: lCtrl.szLoginUser.call,
+                            loginUsers: lCtrl.asyncLoginUsers,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Center(
+                          child: MyTextField(
+                            bObscureText: true,
+                            hintText: 'Password',
+                            myController: lCtrl.passwordController.value,
+                            mnTextfieldHeight: 50.0,
+                            myTextInputType: TextInputType.visiblePassword,
+                            suffixIcon: const Icon(Icons.password),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Center(
+                          child: MyTextButton(
+                            onTab: () => lCtrl.loginScanner(),
+                            labelText: 'Login',
+                            buttonWidth: screenWidth,
+                            buttonHeight: 50.0,
+                            buttonColor: Colors.blue.shade600,
+                            buttonLabelColor: Colors.grey.shade300,
+                            borderRadius: 25.0,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 20),
-                    Center(
-                      child: MyTextButton(
-                        onTab: () => lCtrl.loginScanner(),
-                        labelText: 'Login',
-                        buttonWidth: screenWidth,
-                        buttonHeight: 50.0,
-                        buttonColor: Colors.blue.shade600,
-                        buttonLabelColor: Colors.grey.shade300,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
         ),
       ),

@@ -8,8 +8,10 @@ class MyTextButton extends StatelessWidget {
   final double buttonHeight;
   final Color buttonColor;
   final Color buttonLabelColor;
+  final double? borderRadius;
   const MyTextButton({
     super.key,
+    this.borderRadius,
     required this.onTab,
     required this.labelText,
     required this.buttonWidth,
@@ -26,7 +28,7 @@ class MyTextButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: kContainerBorderColor, width: 3.0),
-            borderRadius: BorderRadius.circular(10.0)),
+            borderRadius: borderRadius != null ? BorderRadius.circular(borderRadius!):null),
         child: TextButton(
           style: ButtonStyle(
             alignment: Alignment.center,

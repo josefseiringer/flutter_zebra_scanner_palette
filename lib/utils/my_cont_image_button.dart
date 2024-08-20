@@ -5,8 +5,10 @@ class MyContainerImageButton extends StatelessWidget {
   final VoidCallback onTab;
   final String labelText;
   final String pathToImage;
+  final double? borderRadius;
   const MyContainerImageButton({
     super.key,
+    this.borderRadius,
     required this.onTab,
     required this.labelText,
     required this.pathToImage,
@@ -24,7 +26,7 @@ class MyContainerImageButton extends StatelessWidget {
             color: kContainerBorderColor,
             width: 3.0,
           ),
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: borderRadius != null ? BorderRadius.circular(borderRadius!): null,
         ),
         width: MediaQuery.of(context).size.width,
         height: 70.0,
