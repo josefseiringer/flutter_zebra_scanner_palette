@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_datawedge/flutter_datawedge.dart';
-//import 'package:flutter_datawedge/models/action_result.dart';
-import 'package:flutter_zebra_scanner_palette/pages/track/track_view.dart';
+import 'package:get/get.dart';
+import '../../pages/track/track_view.dart';
 import '../../constants.dart';
-//import 'package:flutter_datawedge/models/scanner_status.dart';
 import '../../pages/order/order_palett_view.dart';
 import '../../utils/my_text_button.dart';
-import 'package:get/get.dart';
-//import '../../pages/order/order_palett_controller.dart';
 import '../../utils/my_text_field.dart';
+//import 'package:flutter_datawedge/models/scanner_status.dart';
+//import '../../pages/order/order_palett_controller.dart';
+//import 'package:flutter_datawedge/models/action_result.dart';
 
 class ScannPage extends StatefulWidget {
   const ScannPage({super.key});

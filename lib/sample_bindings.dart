@@ -8,10 +8,10 @@ import './services/current_location_controller.dart';
 class SampleBindings extends Bindings {
   @override
   void dependencies() {
-  Get.lazyPut<LoginController>(() => LoginController(), fenix: true);
-  Get.lazyPut<PalettController>(() => PalettController(), fenix: true);
-  Get.lazyPut<OrderPalettController>(() => OrderPalettController(), fenix: true);
-  Get.lazyPut<CurrentLocationController>(() => CurrentLocationController(), fenix: true);
-  Get.lazyPut<TrackController>(() => TrackController(), fenix: true);
+  Get.lazyPut<LoginController>(() => LoginController());
+  Get.lazyPut<PalettController>(() => PalettController());
+  Get.lazyPut<OrderPalettController>(() => OrderPalettController());
+  Get.lazyPut<CurrentLocationController>(() => CurrentLocationController());
+  Get.lazyPut<TrackController>(() => TrackController());
   }
 }

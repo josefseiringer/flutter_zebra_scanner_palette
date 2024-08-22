@@ -21,7 +21,8 @@ class CurrentLocationController extends GetxController {
 
   //check if we have internet connection
   Future<bool> checkInternetConnection() async {
-    if (await InternetConnectionChecker().hasConnection) {
+    bool isConnected = await InternetConnectionChecker().hasConnection;
+    if (isConnected) {
       hasInternet.value = true;
     } else {
       hasInternet.value = false;
