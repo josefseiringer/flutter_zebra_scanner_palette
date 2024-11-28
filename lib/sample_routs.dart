@@ -1,6 +1,6 @@
 
-import 'package:flutter_zebra_scanner_palette/sample_bindings.dart';
 import 'package:get/get.dart';
+import '/sample_bindings.dart';
 import '../pages/track/track_view.dart';
 import '../pages/palett/palett_view.dart';
 import '../pages/scann/scann_view.dart';
